@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAETE BUDGET HUB</title>
+   
+    <link rel="stylesheet" href="dashboard.css">
+   
+   
+    <link rel="icon" type="image/png" href="paete.png">
+ 
+</head>
+<body>
+   
+    <div class="sidebar">
+ 
+        <div class="sidebar-header">
+            <img src="paete.png" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-text-group">
+                <span class="system-name">Paete Budget Hub</span>
+                <span class="workflow-portal">Workflow Portal</span>
+            </div>
+        </div>
+       
+        <nav class="sidebar-nav">
+            <a href="dashboard_admin.html" class="nav-item"><i class="dashboard"></i> Dashboard</a>
+            <a href="budgetsub.html" class="nav-item"><i class="budgetsub"></i> Budget Submission</a>
+            <a href="documenttrack.html" class="nav-item"><i class="tracking"></i> Document Tracking</a>
+            <a href="financerev.html" class="nav-item"><i class="financerev"></i> Finance Review</a>
+            <a href="approval.html" class="nav-item"><i class="approval"></i> Approval</a>
+            <a href="#" class="nav-item active"><i class="management"></i> User Management</a>
+            <a href="audit.html" class="nav-item"><i class="history"></i> Audit Trail</a>
+            <a href="archive.html" class="nav-item"><i class="archives"></i> Archive</a>
+        </nav>
+       
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <span class="user-avatar">A</span>
+                <span class="user-info">
+                    <span class="user-name">admin</span>
+                    <span class="user-role">Administrator</span>
+                </span>
+            </div>
+            <a href="login.html" class="sign-out-btn"><i class="sign-out"></i> Sign Out</a>
+        </div>
+    </div> <div class="main-content">
+     
+        <header class="dashboard-header">
+            <div class="header-title-group">
+                <h1 class="page-title">User Management</h1>
+                <span class="department-info">IT Department</span>
+            </div>
+        </header>
+    <div class="management-body">
+        <div class="page-description-v2">
+            <div class="desc-content">
+                <h2>User Management</h2>
+                <p>Manage system users, roles, and permissions</p>
+            </div>
+            <button class="um-add-user-btn">+ Add User</button>
+        </div>
+ 
+        <div class="um-stats-grid">
+            <div class="um-stat-card">
+                <div class="um-stat-info">
+                    <span class="um-label">Total Users</span>
+                    <h3 class="um-value">8</h3>
+                </div>
+                <div class="um-icon-box">👤</div>
+            </div>
+            <div class="um-stat-card">
+                <div class="um-stat-info">
+                    <span class="um-label">Active Users</span>
+                    <h3 class="um-value">7</h3>
+                </div>
+                <div class="um-icon-box active-glow">✅</div>
+            </div>
+            <div class="um-stat-card">
+                <div class="um-stat-info">
+                    <span class="um-label">Departments</span>
+                    <h3 class="um-value">1</h3>
+                </div>
+                <div class="um-icon-box">🏢</div>
+            </div>
+            <div class="um-stat-card">
+                <div class="um-stat-info">
+                    <span class="um-label">Roles</span>
+                    <h3 class="um-value">1</h3>
+                </div>
+                <div class="um-icon-box">🛡️</div>
+            </div>
+        </div>
+ 
+        <div class="um-search-wrapper">
+            <input type="text" placeholder="Search by username, name, email, or department..." class="um-search-field">
+        </div>
+ 
+        <div class="um-list-container">
+            <div class="um-list-header">
+                <h3>System Users</h3>
+                <span class="um-count">Showing 8 of 8 users</span>
+            </div>
+ 
+            <div class="um-user-item">
+                <div class="um-avatar">S</div>
+                <div class="um-user-info">
+                    <div class="um-name-row">
+                        <span class="um-full-name">System Administrator</span>
+                        <span class="um-badge-active">active</span>
+                        <span class="um-badge-role">Administrator</span>
+                    </div>
+                    <div class="um-meta-row">
+                        <span>👤 @admin</span>
+                        <span>📧 admin@lgu.gov.ph</span>
+                        <span>🏢 IT Department</span>
+                    </div>
+                </div>
+                <div class="um-actions">
+                    <button class="um-edit" onclick="editUser(1)">✏️</button>
+                    <button class="um-delete">🗑️</button>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+ 
+</html>
+<div id="addUserModal" class="um-modal-overlay">
+    <div class="um-modal-container">
+        <div class="um-modal-header">
+            <h3>Add New User</h3>
+            <button onclick="closeModal()" class="um-close-btn">&times;</button>
+        </div>
+        <p class="um-modal-subtitle">Create a new system user with role and department assignment</p>
+       
+        <form id="addUserForm" class="um-modal-form">
+            <div class="um-form-row">
+                <div class="um-input-group">
+                    <label>Username *</label>
+                    <input type="text" id="newUsername" placeholder="username" required>
+                </div>
+                <div class="um-input-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="newFullName" placeholder="Juan dela Cruz" required>
+                </div>
+            </div>
+            <div class="um-form-row">
+                <div class="um-input-group">
+                    <label>Email *</label>
+                    <input type="email" id="newEmail" placeholder="user@lgu.gov.ph" required>
+                </div>
+                <div class="um-input-group">
+                    <label>Phone</label>
+                    <input type="text" id="newPhone" placeholder="+63 912 345 6789">
+                </div>
+            </div>
+            <div class="um-form-row">
+                <div class="um-input-group">
+                    <label>Role *</label>
+                    <select id="newRole" required>
+                        <option value="">Select role</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="Approver">Approver</option>
+                        <option value="Department Head">Department Head</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Staff">Staff</option>
+                    </select>
+                </div>
+                <div class="um-input-group">
+                    <label>Department *</label>
+                    <select id="newDept" required>
+                        <option value="">Select department</option>
+                        <option value="IT Department">IT Department</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Mayor's Office">Mayor's Office</option>
+                        <option value="Treasury">Treasury</option>
+                    </select>
+                </div>
+            </div>
+            <div class="um-input-group">
+                <label>Status</label>
+                <select id="newStatus">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="um-modal-footer">
+                <button type="button" class="um-btn-cancel" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="um-btn-confirm">Create User</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="userman.js"></script>
+</body>
+</html>
+ 

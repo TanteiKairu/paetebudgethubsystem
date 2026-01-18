@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAETE BUDGET HUB - Approval</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="paete.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar"> 
+        <div class="sidebar-header">
+            <img src="paete.png" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-text-group"> 
+                <span class="system-name">Paete Budget Hub</span>
+                <span class="workflow-portal">Workflow Portal</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard_admin.html" class="nav-item"><i class="dashboard"></i> Dashboard</a>
+            <a href="budgetsub.html" class="nav-item"><i class="budgetsub"></i> Budget Submission</a>
+            <a href="documenttrack.html" class="nav-item"><i class="tracking"></i> Document Tracking</a>
+            <a href="financerev.html" class="nav-item"><i class="financerev"></i> Finance Review</a>
+            <a href="#" class="nav-item active"><i class="approval"></i> Approval</a>
+            <a href="userman.html" class="nav-item"><i class="management"></i> User Management</a>
+            <a href="audit.html" class="nav-item"><i class="history"></i> Audit Trail</a>
+            <a href="archive.html" class="nav-item"><i class="archives"></i> Archive</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <span class="user-avatar">A</span>
+                <span class="user-info">
+                    <span class="user-name">admin</span>
+                    <span class="user-role">Administrator</span>
+                </span>
+            </div>
+            <a href="login.html" class="sign-out-btn"><i class="sign-out"></i> Sign Out</a>
+        </div>
+    </div> 
+
+    <div class="main-content">
+        <header class="dashboard-header">
+            <div class="header-title-group">
+                <h1 class="page-title">Approval</h1>
+                <span class="department-info">IT Department</span>
+            </div>
+        </header>
+
+        <div class="submission-from-group">
+            <h2>Final Approval</h2>
+            <p>Review and approve budget requests with e-signature</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-text"><span>Pending Approval</span><h2 id="count-pending">0</h2></div>
+                <div class="stat-icon icon-blue">📄</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-text"><span>Total Amount</span><h2 id="total-val">₱0.00</h2></div>
+                <div class="stat-icon icon-green">₱</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-text"><span>High Priority</span><h2 id="high-priority-val">0</h2></div>
+                <div class="stat-icon icon-red">⚠️</div>
+            </div>
+        </div>
+
+        <div class="review-layout">
+            <div class="queue-container">
+                <h3 class="queue-title" id="queue-header">Awaiting Final Approval</h3>
+                <div id="submission-list">
+                    </div>
+            </div>
+
+            <div class="details-container" id="details-area">
+                <div class="empty-state-card">
+                    <div class="placeholder-icon">📋</div>
+                    <p>Select a budget request for final signature</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ 
+</body>
+
+<div id="sig-modal" class="modal-overlay" style="display:none;">
+    <div class="sig-modal-container">
+        <div class="sig-modal-header">
+            <h3>Electronic Signature Required</h3>
+            <button class="close-modal" onclick="closeSignatureModal()">&times;</button>
+        </div>
+        <p class="sig-subtitle">Please provide your electronic signature to approve <span id="modal-item-id">BDG-2024-002</span></p>
+
+        <div class="sig-budget-banner">
+            <span class="sig-icon">🖋️</span>
+            <div>
+                <strong>Budget Approval</strong><br>
+                <small>By signing, you approve budget <span id="modal-banner-id">BDG-2024-002</span> for amount <span id="modal-banner-amt">₱1,800,000.00</span></small>
+            </div>
+        </div>
+
+        <div class="sig-input-group">
+            <label>Type your full name to sign</label>
+            <input type="text" id="sig-full-name" placeholder="Enter your full name">
+        </div>
+
+<div class="sig-preview-area" id="drop-zone" style="cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; height: 130px; background: #fafafa; margin: 15px 0; overflow: hidden; border-radius: 8px;">
+    <input type="file" id="sig-upload" accept="image/*" style="display: none;">
+    
+    <div id="sig-preview-content" style="text-align: center; color: #999;">
+        <i class="material-icons" style="font-size: 32px; display: block;">add_a_photo</i>
+        <span style="font-size: 12px;">Drag & drop signature image here<br>or <strong>click to upload</strong></span>
+    </div>
+
+    <img id="sig-image-preview" src="" style="display: none; max-height: 100%; max-width: 100%; object-fit: contain;">
+</div>
+
+        <div class="sig-warning-box">
+            <p>By signing this document, you certify that:</p>
+            <ul>
+                <li>You have reviewed all budget details</li>
+                <li>The approval is authorized and legitimate</li>
+                <li>This signature is legally binding</li>
+            </ul>
+        </div>
+
+        <div class="sig-modal-footer">
+            <button class="sig-btn-cancel" onclick="closeSignatureModal()">Cancel</button>
+<button class="sig-btn-confirm" onclick="confirmSignature()" style="background: #27ae60; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+    🖋️ Sign & Approve
+</button>
+        </div>
+        
+    </div>
+       <script src="approval_logic.js"></script>
+</div>
+</html>

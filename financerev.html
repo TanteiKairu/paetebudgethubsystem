@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAETE BUDGET HUB - Finance Review</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="financerev.css">
+    <link rel="icon" type="image/png" href="paete.png">
+</head>
+<body>
+    
+    <div class="sidebar"> 
+        <div class="sidebar-header">
+            <img src="paete.png" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-text-group"> 
+                <span class="system-name">Paete Budget Hub</span>
+                <span class="workflow-portal">Workflow Portal</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard_admin.html" class="nav-item"><i class="dashboard"></i> Dashboard</a>
+            <a href="budgetsub.html" class="nav-item"><i class="budgetsub"></i> Budget Submission</a>
+            <a href="documenttrack.html" class="nav-item"><i class="tracking"></i> Document Tracking</a>
+            <a href="#" class="nav-item active"><i class="financerev"></i> Finance Review</a>
+            <a href="approval.html" class="nav-item"><i class="approval"></i> Approval</a>
+            <a href="userman.html" class="nav-item"><i class="management"></i> User Management</a>
+            <a href="audit.html" class="nav-item"><i class="history"></i> Audit Trail</a>
+            <a href="archive.html" class="nav-item"><i class="archives"></i> Archive</a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <span class="user-avatar">A</span>
+                <span class="user-info">
+                    <span class="user-name">admin</span>
+                    <span class="user-role">Administrator</span>
+                </span>
+            </div>
+            <a href="login.html" class="sign-out-btn"><i class="sign-out"></i> Sign Out</a>
+        </div>
+    </div> 
+
+    <div class="main-content">
+        <header class="dashboard-header">
+            <div class="header-title-group">
+                <h1 class="page-title">Finance Review</h1>
+                <span class="department-info">IT Department</span>
+            </div>
+        </header>
+            <div class="page-description">
+                 <h2>Finance Review</h2>
+                <p>Review and evaluate pending budget requests</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-text"><span>Pending Review</span><h2 id="count-pending">0</h2></div>
+                    <div class="stat-icon icon-pending">📄</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-text"><span>Total Amount</span><h2 id="total-val">₱0.00</h2></div>
+                    <div class="stat-icon icon-total">📊</div>
+                </div>
+<div class="stat-card">
+    <div class="stat-content">
+        <p style="color: rgb(255, 251, 251); font-size: 13px; margin: 0;">High Priority</p>
+        <h2 id="high-priority-val">0</h2> 
+    </div><div class="stat-icon">⚠️</div></div>
+                <div class="stat-card">
+                    <div class="stat-text"><span>Avg. Amount</span><h2 id="avg-val">₱0.00</h2></div>
+                    <div class="stat-icon icon-avg">📈</div>
+                </div>
+            </div>
+
+            <div class="review-layout">
+                <div class="queue-container">
+                    <h3 class="queue-title" id="queue-header">Review Queue (0)</h3>
+                    <button onclick="clearAllData()" style="margin-bottom: 10px; background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+        Clear All Requests
+    </button>
+                    <div id="submission-list">
+                        <div class="empty-state-card">
+                            <p>No budget requests submitted yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="details-container">
+                    <div class="empty-state-card">
+                        <div class="placeholder-icon">📄</div>
+                        <p>Select a budget request to review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="finance_logic.js"></script>
+</body>
+</html>

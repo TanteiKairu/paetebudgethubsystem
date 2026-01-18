@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAETE BUDGET HUB - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="paete.png">
+</head>
+<body>
+ 
+<div class="sidebar">
+    <div class="sidebar-header">
+        <img src="paete.png" alt="Logo" class="sidebar-logo">
+        <div class="sidebar-text-group">
+            <span class="system-name">Paete Budget Hub</span>
+            <span class="workflow-portal">Workflow Portal</span>
+        </div>
+    </div>
+ 
+    <nav class="sidebar-nav">
+        <a href="#" class="nav-item active"><i class="dashboard"></i> Dashboard</a>
+        <a href="budgetsub.html" class="nav-item"><i class="budgetsub"></i> Budget Submission</a>
+        <a href="documenttrack.html" class="nav-item"><i class="tracking"></i> Document Tracking</a>
+        <a href="financerev.html" class="nav-item"><i class="financerev"></i> Finance Review</a>
+        <a href="approval.html" class="nav-item"><i class="approval"></i> Approval</a>
+        <a href="userman.html" class="nav-item"><i class="management"></i> User Management</a>
+        <a href="audit.html" class="nav-item"><i class="history"></i> Audit Trail</a>
+        <a href="archive.html" class="nav-item"><i class="archives"></i> Archive</a>
+    </nav>
+ 
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <span class="user-avatar">A</span>
+            <span class="user-info">
+                <span class="user-name">admin</span>
+                <span class="user-role">Administrator</span>
+            </span>
+        </div>
+        <a href="login.html" class="sign-out-btn"><i class="sign-out"></i> Sign Out</a>
+    </div>
+</div>
+ 
+<div class="main-content">
+    <header class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="header-title-group">
+            <h1 class="page-title">Dashboard</h1>
+            <span class="department-info">IT Department</span>
+        </div>
+        <div style="position: relative;">
+            <button id="notifications-btn" onclick="toggleNotifications()" style="background: transparent; border: none; cursor: pointer; position: relative; padding: 8px;">
+                <span style="font-size: 24px;">🔔</span>
+                <span id="notification-badge" style="display: none; position: absolute; top: 4px; right: 4px; background: #f44336; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white;">0</span>
+            </button>
+            <div id="notifications-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 350px; max-height: 400px; overflow-y: auto; z-index: 1000; margin-top: 8px;">
+                <div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f8f9fa;">
+                    <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Notifications</h3>
+                    <button onclick="clearAllNotifications()" style="background: none; border: none; color: #666; cursor: pointer; font-size: 12px; padding: 4px 8px;">Clear All</button>
+                </div>
+                <div id="notifications-list" style="max-height: 300px; overflow-y: auto;">
+                    <div style="padding: 20px; text-align: center; color: #999;">No notifications</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+            <div class="welcome-banner">
+            <h2> Hello, Approving Official </h2>
+            <p>System Administrator - Full Access Control</p>
+            <div class="current-date" id="headerDateTimeDisplay">
+                <span id="currentDateTime"></span>
+
+                
+            </div>
+        </div>
+
+    
+
+    <div class="management-body">
+ 
+        <h3> Overall Statistics </h3>
+
+
+        <div class="um-stats-grid">
+            
+            <div class="um-stat-card" style="background:#ffd5a2c2;">
+                <div class="um-stat-info">
+                    <span class="um-label">Total Requests</span>
+                    <h3 class="um-value" id="stat-total">0</h3>
+                </div>
+                <div class="um-icon-box">📄</div>
+            </div>
+            <div class="um-stat-card" style="background:#ffd5a2c2;">
+                <div class="um-stat-info">
+                    <span class="um-label">Pending</span>
+                    <h3 class="um-value" id="stat-pending">0</h3>
+                </div>
+                <div class="um-icon-box">⏳</div>
+            </div>
+            <div class="um-stat-card" style="background:#ffd5a2c2;">
+                <div class="um-stat-info">
+                    <span class="um-label">Approved</span>
+                    <h3 class="um-value" id="stat-approved">0</h3>
+                </div>
+                <div class="um-icon-box">✅</div>
+            </div>
+            <div class="um-stat-card" style="background:#ffd5a2c2;">
+                <div class="um-stat-info">
+                    <span class="um-label">Rejected / Archived</span>
+                    <h3 class="um-value" id="stat-rejected">0</h3>
+                </div>
+                <div class="um-icon-box">📦</div>
+            </div>
+        </div>
+ 
+        <!-- Quick actions + recent -->
+        <div style="display:flex; gap:20px; margin-top:25px;">
+            <div class="um-list-container" style="flex:1; background:#ffd5a2c2; padding:20px; border-radius:12px;">
+                <div class="um-list-header">
+                    <h3>Quick Actions</h3>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                    <a href="budgetsub.html" class="btn-primary">➕ New Budget Request</a>
+                    <a href="approval.html" class="btn-secondary">✔ Review & Approve Requests</a>
+                    <a href="archive.html" class="btn-secondary">📦 View Archive</a>
+                    <a href="financerev.html" class="btn-secondary">📊 Generate Reports</a>
+                </div>
+            </div>
+ 
+            <div class="um-list-container" style="flex:2; background:#ffd5a2c2; padding:20px; border-radius:12px;">
+                <div class="um-list-header">
+                    <h3>Recent Requests</h3>
+                    <span class="um-count" id="recent-count">Showing 0</span>
+                </div>
+                <div id="recent-requests"></div>
+            </div>
+        </div>
+<div class="um-list-container" style="background:#ffd5a2c2; padding:20px; border-radius:12px; margin-top:20px;">
+    <div class="um-list-header">
+        <h3>Budget Allocation (Used vs Unused)</h3>
+        <span class="um-count" id="limit-display">Admin Limit: ₱1,000,000</span>
+    </div>
+    
+    <div style="display: flex; align-items: center; justify-content: center; padding: 20px;">
+        <div style="width: 300px; height: 300px;">
+            <canvas id="budgetPieChart"></canvas>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 10px; font-weight: bold;">
+        <span style="color: #d9534f;">● Used: <span id="used-display">₱0.00</span></span>
+        <span style="color: #5cb85c;">● Unused: <span id="unused-display">₱0.00</span></span>
+    </div>
+</div>
+        
+ 
+    </div>
+</div>
+ 
+<script src="dashboard_admin.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

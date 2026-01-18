@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAETE BUDGET HUB</title>
+    
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" type="image/png" href="paete.png">
+
+    </head>
+<body>
+    
+    <div class="sidebar"> 
+        <div class="sidebar-header">
+            <img src="paete.png" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-text-group"> 
+                <span class="system-name">Paete Budget Hub</span>
+                <span class="workflow-portal">Workflow Portal</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard_admin.html" class="nav-item"><i class="dashboard"></i> Dashboard</a>
+            <a href="budgetsub.html" class="nav-item active"><i class="budgetsub"></i> Budget Submission</a>
+            <a href="documenttrack.html" class="nav-item"><i class="tracking"></i> Document Tracking</a>
+            <a href="financerev.html" class="nav-item"><i class="financerev"></i> Finance Review</a>
+            <a href="approval.html" class="nav-item"><i class="approval"></i> Approval</a>
+            <a href="userman.html" class="nav-item"><i class="management"></i> User Management</a>
+            <a href="audit.html" class="nav-item"><i class="history"></i> Audit Trail</a>
+            <a href="archive.html" class="nav-item"><i class="archives"></i> Archive</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <span class="user-avatar">A</span>
+                <span class="user-info">
+                    <span class="user-name">admin</span>
+                    <span class="user-role">Administrator</span>
+                </span>
+            </div>
+            <a href="login.html" class="sign-out-btn"><i class="sign-out"></i> Sign Out</a>
+        </div>
+    </div> 
+    
+    <div class="main-content">
+        
+        <header class="dashboard-header">
+            <div class="header-title-group">
+                <h1 class="page-title">Budget Submission</h1>
+                <span class="department-info">IT Department</span>
+                </div>
+        </header>
+            <div class="submission-from-group">
+                <h2>Budget Submission Form</h2>
+                <p>Submit a new departmental budget request for review and approval</p>
+            </div>
+        
+        <form id="newBudgetForm">
+        
+            <section class="budget-basic-information">
+                <div class="card basic-info-card">
+                    <h3>Basic Information</h3>
+                    <p>Enter the general details of your budget request</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department:</label>
+                            <input type="text" id="department" name="department" value="" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fiscalYear">Fiscal Year:</label>
+                            <select id="fiscalYear" name="fiscalYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budgetCategory">Budget Category</label>
+                            <select id="budgetCategory" name="budgetCategory" required>
+                                <option value="">Select category</option> 
+                                <option value="operational">Operational Expenses</option>
+                                <option value="capital">Capital Outlay</option>
+                                <option value="personnel">Personnel Services</option>
+                                <option value="mooe">Maintenance and Operations</option>
+                                <option value="special">Special Projects</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="datePrepared">Submission Date:</label>
+                            <input type="date" id="datePrepared" name="datePrepared" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budgetTitle">Budget Title</label>
+                        <input type="text" id="budgetTitle" name="budgetTitle" placeholder="eg. Budget for infrastructure" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="justification">Justification</label>
+                        <textarea id="justification" name="justification" rows="4" placeholder="Provide detailed justification for this budget request..."></textarea>
+                    </div>
+                </div> 
+            </section>
+
+
+            <section class="budget-budget-line-items">
+                <div class="card budget-line-card">
+                    <div class="card-header-actions">
+                        <h3>Budget Line Items</h3>
+                        <p>Add detailed breakdown of budget items</p>
+                        <button type="button" class="btn-add-item" id="budgetLineAddButton"><i class="icon-plus"></i> + Add Item</button>
+                    </div>
+
+
+                    <div id="lineItemsContainer"> 
+                        <div class="line-item-entry" data-item-id="1">
+                            <div class="form-row item-header">
+                                <div class="form-group item-description">
+                                    <label>Description</label>
+                                    <input type="text" class="item-input" name="item_desc_1" placeholder="Item description">
+                                </div>
+                                <div class="form-group item-quantity">
+                                    <label>Quantity</label>
+                                    <input type="number" class="item-input item-quantity-input" name="item_qty_1" value="1" min="1">
+                                </div>
+                                <div class="form-group item-unit-cost">
+                                    <label>Unit Cost (₱)</label>
+                                    <input type="number" class="item-input item-cost-input" name="item_cost_1" value="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group item-total">
+                                    <label>Total</label>
+                                    <p class="total-amount item-total-display">₱0.00</p>
+                                </div>
+                                <div class="form-group item-actions">
+                                    <button type="button" class="btn-remove-item" data-item-id="1">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-summary">
+                        <span class="summary-label">Total Budget Request</span>
+                        <span class="summary-total" id="grandTotalDisplay">₱0.00</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="budget-supporting-documents">
+              <div class="card supporting-documents-card">
+    <h3>Supporting Documents</h3>
+    <p>Upload relevant documents and attachments </p>
+    
+    <div class="file-drop-area" id="fileDropArea">
+        <input type="file" id="fileInput" name="supporting_files[]" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display: none;">
+        
+        <i class="icon-upload"></i> 
+        <h3>Click to upload or drag and drop files here</h3>
+         <h5>(PDF, DOC, DOCX, XLS, XLSX, Max 10MB)</h5>
+
+        <div id="fileListContainer" class="file-list-container"></div>
+        
+    </div>
+</div>
+            </section> 
+
+            <div class="form-actions">
+                <button type="button" class="btn-secondary">Save as Draft</button>
+                <button type="submit" class="btn-primary"onclick="submitBudget()">Submit for Review</button>
+            </div>
+
+        </form>
+     </div> 
+        <script src="budget.js"></script>
+
+</body>
+ </html>
+
